@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    private let locationMgr = LocationManager()
+    
     var body: some View {
         ZStack {
             MapViewRepresentable()
