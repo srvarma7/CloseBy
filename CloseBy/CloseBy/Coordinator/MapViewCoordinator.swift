@@ -11,14 +11,14 @@ import MapKit
 final class MapViewCoordinator: NSObject, MKMapViewDelegate {
     
     var mapView: MapViewRepresentable
-    let zoomDistance: CLLocationDistance = 2000
+    let zoomDistance: CLLocationDistance = 3000
     
     init(mapView: MapViewRepresentable) {
         self.mapView = mapView
     }
     
     func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
-        //
+        //Zooming to the userLocation
         if let annotationView = views.first {
             if let annotation = annotationView.annotation {
                 if annotation is MKUserLocation {
