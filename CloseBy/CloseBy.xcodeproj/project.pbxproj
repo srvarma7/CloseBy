@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8000DB00250F3E15009BD8EB /* MapViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8000DAFF250F3E15009BD8EB /* MapViewCoordinator.swift */; };
 		8015016A250CACFF0036824E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80150169250CACFF0036824E /* AppDelegate.swift */; };
 		8015016C250CACFF0036824E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8015016B250CACFF0036824E /* SceneDelegate.swift */; };
 		8015016E250CACFF0036824E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8015016D250CACFF0036824E /* ContentView.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8000DAFF250F3E15009BD8EB /* MapViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewCoordinator.swift; sourceTree = "<group>"; };
 		80150166250CACFF0036824E /* CloseBy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloseBy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80150169250CACFF0036824E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8015016B250CACFF0036824E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +43,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8000DAFE250F3DCF009BD8EB /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				8000DAFF250F3E15009BD8EB /* MapViewCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		8015015D250CACFF0036824E = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +70,7 @@
 		80150168250CACFF0036824E /* CloseBy */ = {
 			isa = PBXGroup;
 			children = (
+				8000DAFE250F3DCF009BD8EB /* Coordinator */,
 				8015017D250E4D280036824E /* View */,
 				80150169250CACFF0036824E /* AppDelegate.swift */,
 				8015016B250CACFF0036824E /* SceneDelegate.swift */,
@@ -163,6 +174,7 @@
 				8015016C250CACFF0036824E /* SceneDelegate.swift in Sources */,
 				8015017F250E4D3F0036824E /* MapViewRepresentable.swift in Sources */,
 				80150181250E4F6C0036824E /* HomeView.swift in Sources */,
+				8000DB00250F3E15009BD8EB /* MapViewCoordinator.swift in Sources */,
 				8015016E250CACFF0036824E /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
