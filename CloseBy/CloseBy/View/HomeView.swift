@@ -13,12 +13,12 @@ struct HomeView: View {
     private let locationMgr = LocationManager()
     @State private var searchTerm: String = ""
     @State private var landmarks = [Landmark]()
+    @State private var isShowingLongResults = false
     
     private func getCloseBy() {
         guard let location = locationMgr.location else {
             return
         }
-        
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = self.searchTerm
         request.region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 2000, longitudinalMeters: 2000)
@@ -47,17 +47,26 @@ struct HomeView: View {
             .frame(width: UIScreen.main.bounds.width - 40)
             .padding()
             
-            PlacemarkView(landmarks: landmarks)
-                .offset(y: calculateOffset())
-                .animation(.spring())
+            PlacemarkView(landmarks: landmarks) {
+                self.isShowingLongResults.toggle()
+            }
+            .frame(width: CSS().width, height: isShowingLongResults ? 550 : 250)
+            .offset(y: calculateOffset())
+            .animation(.spring())
+            .padding()
         }
     }
     
     private func calculateOffset() -> CGFloat {
+        print(UIScreen.main.bounds.height)
+        print(UIScreen.main.bounds.width)
+        print(UIScreen.main.bounds)
         if landmarks.count <= 0 {
+            return UIScreen.main.bounds.height
+        } else if isShowingLongResults {
             return UIScreen.main.bounds.height/3
         } else {
-            return UIScreen.main.bounds.height/3
+            return UIScreen.main.bounds.height - UIScreen.main.bounds.height/3
         }
     }
 }
