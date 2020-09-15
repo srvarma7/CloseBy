@@ -12,6 +12,7 @@ struct HomeView: View {
     
     private let locationMgr = LocationManager()
     @State private var searchTerm: String = ""
+    @State private var landmarks = [Landmark]()
     
     private func getCloseBy() {
         guard let location = locationMgr.location else {
@@ -27,8 +28,8 @@ struct HomeView: View {
             guard let response = resp, err == nil else { return }
             
             let items = response.mapItems
-            items.map {
-                print($0.name)
+            self.landmarks = items.map {
+                Landmark(placemark: $0.placemark)
             }
         }
     }
@@ -36,15 +37,27 @@ struct HomeView: View {
     var body: some View {
         ZStack(alignment: .top) {
             
-            MapViewRepresentable()
+            MapViewRepresentable(landmarks: landmarks)
                 .ignoresSafeArea()
             
             TextField("Search here", text: $searchTerm, onCommit: {
                 getCloseBy()
             })
             .textFieldStyle(RoundedBorderTextFieldStyle())
+            .frame(width: UIScreen.main.bounds.width - 40)
             .padding()
             
+            PlacemarkView(landmarks: landmarks)
+                .offset(y: calculateOffset())
+                .animation(.spring())
+        }
+    }
+    
+    private func calculateOffset() -> CGFloat {
+        if landmarks.count <= 0 {
+            return UIScreen.main.bounds.height/3
+        } else {
+            return UIScreen.main.bounds.height/3
         }
     }
 }
